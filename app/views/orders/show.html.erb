@@ -1,13 +1,22 @@
 <section class="orders-show">
 
   <header class="page-header">
-    <h1>Order #<%= @order.id %></h1>
+  <h1> Thank you for your order! </h1>
   </header>
 
   <div class="order-summary jumbotron">
+    <h2>Order #<%= @order.id %></h2>
+    <p>email:<%= @order.email%> </p>
+    <p>Total: <%= humanized_money_with_symbol @order.total_cents / 100.00 %></p>
+
+
     <h4>Thank you for your order!</h4>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+
+
+
+
 
 </section>
