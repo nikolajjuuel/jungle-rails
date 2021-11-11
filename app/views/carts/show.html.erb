@@ -1,5 +1,15 @@
 <section class="cart-show">
 
+
+
+<% if cart.size < 1 %>
+  <header class="page-header">
+    <h1>Your Cart is Currently Empty.</h1>
+  </header>
+    <p> Continue browsing <%= link_to "here.", "/" %> </p>
+<% end %>
+
+<% if cart.size >= 1 %>
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
@@ -48,5 +58,5 @@
       <% end %>
     </div>
   </div>
-
+<% end %>
 </section>
