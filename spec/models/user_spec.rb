@@ -35,12 +35,24 @@ RSpec.describe User, type: :model do
 
   describe '.authenticate with credentials' do
     # validation examples here
-    @user = User.create(:name => 'test', :email => 'test@test.ca',  :password => 'password', :password_confirmation => 'password')
-    it "must have an existing email" do 
+      it "must have an existing email" do 
+        @user = User.new(:name => 'test', :email => 'test@Newtest.ca',  :password => 'password', :password_confirmation => 'password').save
+        User.authenticate_with_credentials('test@Newtest.ca', 'password')
 
-  
-    end
+        expect(@user).to eq(@user)
+      end
+      it "must login user if spaces around email" do 
+        @user = User.new(:name => 'test', :email => 'test@Newtest.ca',  :password => 'password', :password_confirmation => 'password').save
+        User.authenticate_with_credentials('    test@Newtest.ca', 'password')
 
+        expect(@user).to eq(@user)
+      end
+      it "must login user if email is uppercase" do 
+        @user = User.new(:name => 'test', :email => 'test@Newtest.ca',  :password => 'password', :password_confirmation => 'password').save
+        User.authenticate_with_credentials('    TEST@NEWTEST.CA', 'password')
+
+        expect(@user).to eq(@user)
+      end
   end
 
   
